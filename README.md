@@ -1,3 +1,3 @@
-#React Tutorial Project
+# React Tutorial Project
 
-first project with react and first commit woohoo
+This is the repository for my first project with React, based on Web Dev Simplified's video "Learn React With This One Project".
