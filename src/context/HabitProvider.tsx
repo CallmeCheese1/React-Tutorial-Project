@@ -3,15 +3,16 @@
 //context is how we can wrap a bunch of components and give them access to the same state data anywhere
 
 import { isSameDay } from "date-fns";
-import { useState, type ReactNode } from "react";
 import { HabitContext, type Habit } from "./useHabits";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import type { ReactNode } from "react";
 
 type HabitProviderProps = {
     children: ReactNode
 }
 
 export function HabitProvider({ children}: HabitProviderProps) {
-    const [habits, setHabits] = useState<Habit[]>([])
+    const [habits, setHabits] = useLocalStorage<Habit[]>("Habits", [])
 
     function addHabit(name: string) {
         //Note to future self: any state is IMMUTABLE. Only way is through setHabits.

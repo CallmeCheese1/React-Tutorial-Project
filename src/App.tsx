@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HabitForm } from "./components/HabitForm";
 import { HabitList } from "./components/HabitList";
 import { Header } from "./components/Header";
@@ -14,6 +14,18 @@ export default function App() {
     end: endOfWeek(week, { weekStartsOn: 1 }),
   });
 
+  useEffect(() => {
+    function handler() {
+      console.log(weekOffset);
+    }
+
+    document.addEventListener("click", handler);
+
+    return () => {
+      document.removeEventListener("click", handler)
+    };
+  }, [weekOffset]);
+
   return (
     <div className="max-w-2x1 mx-auto p-4 flex flex-col gap-4">
       <HabitProvider>
@@ -23,7 +35,7 @@ export default function App() {
           onPrev={() => setWeekOffset((o) => o - 1)}
         />
         <HabitForm />
-        <HabitList visibleDates={visibleDates}/>
+        <HabitList visibleDates={visibleDates} />
       </HabitProvider>
     </div>
   );
