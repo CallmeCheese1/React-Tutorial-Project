@@ -22,7 +22,7 @@ export default function App() {
     document.addEventListener("click", handler);
 
     return () => {
-      document.removeEventListener("click", handler)
+      document.removeEventListener("click", handler);
     };
   }, [weekOffset]);
 
@@ -37,6 +37,51 @@ export default function App() {
         <HabitForm />
         <HabitList visibleDates={visibleDates} />
       </HabitProvider>
+
+      {/*this is a line*/}
+      <hr className="border-t border-gray-300 my-2" />
+
+      <span className="text-zinc-400 text-sm">
+        Note: None of the below is functional or connected to anything above.
+        This is purely to fulfill the assignment requirements.
+      </span>
+
+      <fieldset className="flex items-center gap-6">
+        <legend className="text-sm font-medium text-zinc-400 mb-2">
+          Select View
+        </legend>
+
+        <label className="flex items-center gap-2 cursor-pointer text-zinc-400 text-sm">
+          <input
+            type="radio"
+            name="habit-filter"
+            value="all"
+            defaultChecked
+            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+          />
+          All
+        </label>
+
+        <label className="flex items-center gap-2 cursor-pointer text-zinc-400 text-sm">
+          <input
+            type="radio"
+            name="habit-filter"
+            value="completed"
+            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+          />
+          Completed
+        </label>
+
+        <label className="flex items-center gap-2 cursor-pointer text-zinc-400 text-sm">
+          <input
+            type="radio"
+            name="habit-filter"
+            value="pending"
+            className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+          />
+          Pending
+        </label>
+      </fieldset>
     </div>
   );
 }
